@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  validate-template:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate template
+        run: |
+          node scripts/pick-task.js --check
+          node scripts/validate-template.js
+          node scripts/add-task.js --file /tmp/codex-template-task.md "CI smoke task"
+
+      - name: Validate NestJS skill submodule
+        run: |
+          test -f skills/nestjs/agent-nestjs-skills/SKILL.md
+          test -f skills/nestjs/agent-nestjs-skills/AGENTS.md
+          test -d skills/nestjs/agent-nestjs-skills/rules

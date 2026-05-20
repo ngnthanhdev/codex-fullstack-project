@@ -1,0 +1,21 @@
+name: Template Smoke
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-project:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Smoke copy template
+        run: |
+          mkdir -p /tmp/template-smoke
+          rsync -a --exclude .git --exclude node_modules --exclude .expo ./ /tmp/template-smoke/app/
+          test -f /tmp/template-smoke/app/AGENTS.md
+          test -f /tmp/template-smoke/app/docs/BRIEF.md
+          test -f /tmp/template-smoke/app/tasks/layer-0-todo.md
+          test -d /tmp/template-smoke/app/skills/expo

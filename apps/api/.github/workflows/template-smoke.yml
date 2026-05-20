@@ -1,0 +1,23 @@
+name: Template Smoke
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-project:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Smoke copy template
+        run: |
+          mkdir -p /tmp/template-smoke
+          rsync -a --exclude .git --exclude node_modules --exclude dist ./ /tmp/template-smoke/app/
+          test -f /tmp/template-smoke/app/AGENTS.md
+          test -f /tmp/template-smoke/app/docs/BRIEF.md
+          test -f /tmp/template-smoke/app/tasks/layer-0-todo.md
+          test -f /tmp/template-smoke/app/skills/nestjs/agent-nestjs-skills/SKILL.md

@@ -1,0 +1,29 @@
+{
+  "name": "codex-fullstack-project",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Codex-first fullstack project shell with Expo React Native mobile and NestJS API workspaces.",
+  "license": "MIT",
+  "workspaces": [
+    "apps/mobile",
+    "apps/api"
+  ],
+  "scripts": {
+    "check": "npm run check:mobile && npm run check:api",
+    "check:mobile": "npm --prefix apps/mobile run check",
+    "check:api": "npm --prefix apps/api run check",
+    "pick-task:mobile": "npm --prefix apps/mobile run pick-task",
+    "pick-task:api": "npm --prefix apps/api run pick-task",
+    "add-task:mobile": "npm --prefix apps/mobile run add-task",
+    "add-task:api": "npm --prefix apps/api run add-task",
+    "list-skills:mobile": "npm --prefix apps/mobile run list-skills"
+  },
+  "keywords": [
+    "codex",
+    "fullstack",
+    "expo",
+    "react-native",
+    "nestjs",
+    "template"
+  ]
+}
