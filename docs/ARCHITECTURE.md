@@ -16,7 +16,10 @@ apps/api     NestJS backend API
 ## Conventions
 
 - Keep shared decisions in `docs/DECISIONS.md`.
+- Keep production rules in `docs/Production Rules.md`.
+- Use `docs/Frontend Architecture Proposal.md` before changing mobile structure or server-state flow.
+- Use `docs/Backend Architecture Proposal.md` before changing API structure, validation, persistence, auth, or logging.
+- Use `docs/Refactor Plan.md` to phase production hardening work.
 - Keep cross-app work in root `tasks/`.
 - Keep app-specific work in each app's own `tasks/` directory.
 - Update this document when API shape, authentication, deployment, or data ownership changes.
-

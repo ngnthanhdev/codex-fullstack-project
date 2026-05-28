@@ -14,13 +14,20 @@ tasks        Shared cross-app task tracking
 ## Working Rules
 
 - Read this file before working on the project.
-- Read `docs/BRIEF.md`, `docs/SPECIFICATIONS.md`, and `docs/ARCHITECTURE.md` before implementing large changes.
+- Read `docs/BRIEF.md`, `docs/SPECIFICATIONS.md`, `docs/ARCHITECTURE.md`, and `docs/Production Rules.md` before implementing large changes.
+- Use `docs/Frontend Architecture Proposal.md` for mobile structure and data-flow decisions.
+- Use `docs/Backend Architecture Proposal.md` for API structure, validation, security, and repository boundaries.
+- Use `docs/Refactor Plan.md` when turning a thin scaffold into production-ready code.
 - For mobile work, also read `apps/mobile/AGENTS.md`.
 - For backend work, also read `apps/api/AGENTS.md`.
 - Keep API contracts explicit before wiring mobile screens to backend behavior.
 - Prefer implementing backend behavior first when the data model or API shape is unclear.
 - Update shared docs when a decision affects both frontend and backend.
 - Do not commit secrets. Keep examples in `.env.example` files only.
+- All JSON API responses should follow the standard envelope in `docs/Production Rules.md`.
+- Frontend components must not call backend APIs directly; use service/query/mutation layers.
+- Backend modules that touch persistence should use controller/service/repository layering.
+- New environment variables must be added to `.env.example` and validated at app startup where applicable.
 
 ## Workspace Ownership
 
@@ -33,10 +40,13 @@ tasks        Shared cross-app task tracking
 
 1. Clarify the product goal in `docs/BRIEF.md`.
 2. Turn the goal into detailed behavior in `docs/SPECIFICATIONS.md`.
-3. Define the API boundary and shared contracts in `docs/ARCHITECTURE.md`.
-4. Break implementation into layers in `docs/SCOPE_BREAKDOWN.md`.
-5. Track cross-app work in `tasks/layer-0-todo.md`.
-6. Implement, test, and update `tasks/done.md`.
+3. Read `docs/Production Rules.md` and decide which baseline rules apply immediately.
+4. Define the API boundary and shared contracts in `docs/ARCHITECTURE.md`.
+5. Align mobile structure with `docs/Frontend Architecture Proposal.md`.
+6. Align backend structure with `docs/Backend Architecture Proposal.md`.
+7. Break implementation into layers in `docs/SCOPE_BREAKDOWN.md`.
+8. Track cross-app work in `tasks/layer-0-todo.md`.
+9. Implement, test, and update `tasks/done.md`.
 
 ## Useful Commands
 
@@ -47,4 +57,3 @@ npm run check:api
 npm run pick-task:mobile
 npm run pick-task:api
 ```
-

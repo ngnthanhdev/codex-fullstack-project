@@ -24,6 +24,15 @@ tasks/      Shared cross-app task tracking
 AGENTS.md   Root instructions that Codex should read first
 ```
 
+## Production Rule Documents
+
+Codex should treat these files as the production baseline for new projects:
+
+- `docs/Production Rules.md`: API envelope, frontend rules, backend rules, review checklist, and recommended hardening additions.
+- `docs/Frontend Architecture Proposal.md`: recommended mobile folder structure and data-flow boundaries.
+- `docs/Backend Architecture Proposal.md`: recommended NestJS structure, security baseline, and repository boundaries.
+- `docs/Refactor Plan.md`: phased plan for turning a scaffold into production-ready code.
+
 ## Clone The Project
 
 ```bash
@@ -52,9 +61,9 @@ npm run check
 5. Send this prompt:
 
 ```text
-Read AGENTS.md, docs/BRIEF.md, docs/SPECIFICATIONS.md, docs/ARCHITECTURE.md, and tasks/layer-0-todo.md.
+Read AGENTS.md, docs/BRIEF.md, docs/SPECIFICATIONS.md, docs/ARCHITECTURE.md, docs/Production Rules.md, docs/Frontend Architecture Proposal.md, docs/Backend Architecture Proposal.md, docs/Refactor Plan.md, and tasks/layer-0-todo.md.
 Then start Phase 0 for this fullstack Expo + NestJS project.
-Work sequentially: clarify the brief, update the specifications, define the first vertical slice, then propose the implementation order before coding.
+Work sequentially: clarify the brief, update the specifications, define the production rules that apply now, define the first vertical slice, then propose the implementation order before coding.
 ```
 
 Codex should then follow the root workflow first. When the work becomes mobile-specific, it should also read `apps/mobile/AGENTS.md`. When the work becomes backend-specific, it should also read `apps/api/AGENTS.md`.
@@ -65,12 +74,15 @@ Ask Codex to work in this order:
 
 1. Fill or refine `docs/BRIEF.md`.
 2. Turn the brief into concrete behavior in `docs/SPECIFICATIONS.md`.
-3. Define the API boundary and app structure in `docs/ARCHITECTURE.md`.
-4. Break the first release into layers in `docs/SCOPE_BREAKDOWN.md`.
-5. Pick the first task from `tasks/layer-0-todo.md`.
-6. Scaffold runnable app code only after the product direction is clear.
-7. Implement backend behavior before mobile integration when the API shape is unclear.
-8. Test or verify each completed layer before moving forward.
+3. Apply the baseline in `docs/Production Rules.md`.
+4. Define the API boundary and app structure in `docs/ARCHITECTURE.md`.
+5. Align mobile implementation with `docs/Frontend Architecture Proposal.md`.
+6. Align backend implementation with `docs/Backend Architecture Proposal.md`.
+7. Break the first release into layers in `docs/SCOPE_BREAKDOWN.md`.
+8. Pick the first task from `tasks/layer-0-todo.md`.
+9. Scaffold runnable app code only after the product direction is clear.
+10. Implement backend behavior before mobile integration when the API shape is unclear.
+11. Test or verify each completed layer before moving forward.
 
 ## Useful Commands
 
