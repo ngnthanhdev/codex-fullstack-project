@@ -20,6 +20,7 @@ skills       Shared Codex skills for production fullstack work
 - Use `docs/Backend Architecture Proposal.md` for API structure, validation, security, and repository boundaries.
 - Use `docs/Refactor Plan.md` when turning a thin scaffold into production-ready code.
 - Use `skills/fullstack/production-app/SKILL.md` before implementing production user-facing workflows, forms, date/time inputs, uploads, notifications, offline/cache behavior, OCR/extraction, or cross-layer fullstack features.
+- Use focused `skills/fullstack/*/SKILL.md` files when a task maps to a specific production pattern.
 - For mobile work, also read `apps/mobile/AGENTS.md`.
 - For backend work, also read `apps/api/AGENTS.md`.
 - Keep API contracts explicit before wiring mobile screens to backend behavior.

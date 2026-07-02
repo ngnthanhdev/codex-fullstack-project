@@ -22,6 +22,21 @@ Also read app-specific skills:
 - Expo/React Native work: `apps/mobile/AGENTS.md` and relevant `apps/mobile/skills/expo/**/SKILL.md`.
 - NestJS/backend work: `apps/api/AGENTS.md` and relevant `apps/api/skills/nestjs/**/SKILL.md`.
 
+For focused work, read the matching modular skill:
+
+- UI/UX workspace screens: `skills/fullstack/mobile-ui-ux-workspace/SKILL.md`
+- React Native animation: `skills/fullstack/react-native-animation/SKILL.md`
+- Mobile forms: `skills/fullstack/mobile-form/SKILL.md`
+- Native date/time inputs: `skills/fullstack/native-date-input/SKILL.md`
+- API/query layer: `skills/fullstack/mobile-api-query/SKILL.md`
+- Firebase notifications: `skills/fullstack/firebase-notification/SKILL.md`
+- Document uploads: `skills/fullstack/document-upload/SKILL.md`
+- Smart bill/OCR capture: `skills/fullstack/smart-bill-capture/SKILL.md`
+- NestJS production APIs: `skills/fullstack/nestjs-production-api/SKILL.md`
+- Mobile file/media flows: `skills/fullstack/mobile-file-media/SKILL.md`
+- i18n/localization: `skills/fullstack/i18n-localization/SKILL.md`
+- Offline/cache behavior: `skills/fullstack/offline-cache/SKILL.md`
+
 ## Working Sequence
 
 1. Define the user job and the first vertical slice.

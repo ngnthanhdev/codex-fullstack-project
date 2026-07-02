@@ -38,6 +38,21 @@ Codex should treat these files as the production baseline for new projects:
 
 - `skills/fullstack/production-app/SKILL.md`: generalized production app skill for mobile UX, design tokens, animation, forms, native date/time inputs, API/query layers, Firebase push, document/file upload, OCR review flows, i18n, offline/cache behavior, and production backend APIs.
 
+Focused production skills are also available under `skills/fullstack/`:
+
+- `mobile-ui-ux-workspace`
+- `react-native-animation`
+- `mobile-form`
+- `native-date-input`
+- `mobile-api-query`
+- `firebase-notification`
+- `document-upload`
+- `smart-bill-capture`
+- `nestjs-production-api`
+- `mobile-file-media`
+- `i18n-localization`
+- `offline-cache`
+
 ## Clone The Project
 
 ```bash
