@@ -1,6 +1,6 @@
 ---
 name: production-app-fullstack
-description: Use when building or refactoring a production-quality fullstack app with a mobile or frontend client and an API backend. Covers UI/UX quality, design tokens, animation, forms, native date/time inputs, API envelopes, TanStack Query/service layers, Firebase push notifications, document/file upload, OCR/review-first extraction flows, i18n, offline/cache behavior, and NestJS-style production API rules. Apply before implementing user-facing workflows, cross-layer features, auth/session flows, file/media features, notification features, or production hardening.
+description: Use when building or refactoring a production-quality fullstack app with a mobile or frontend client and an API backend. Covers UI/UX quality, design tokens, animation, forms, native date/time inputs, API envelopes, TanStack Query/service layers, document/file upload, OCR/review-first extraction flows, i18n, offline/cache behavior, and NestJS-style production API rules. Apply before implementing user-facing workflows, cross-layer features, auth/session flows, file/media features, or production hardening.
 ---
 
 # Production App Fullstack
@@ -29,7 +29,6 @@ For focused work, read the matching modular skill:
 - Mobile forms: `skills/fullstack/mobile-form/SKILL.md`
 - Native date/time inputs: `skills/fullstack/native-date-input/SKILL.md`
 - API/query layer: `skills/fullstack/mobile-api-query/SKILL.md`
-- Firebase notifications: `skills/fullstack/firebase-notification/SKILL.md`
 - Document uploads: `skills/fullstack/document-upload/SKILL.md`
 - Smart bill/OCR capture: `skills/fullstack/smart-bill-capture/SKILL.md`
 - NestJS production APIs: `skills/fullstack/nestjs-production-api/SKILL.md`
@@ -129,15 +128,6 @@ For focused work, read the matching modular skill:
 - Auth/session bootstrap should gate protected routes without flashing private screens.
 - Preserve intended return paths across login/signup when deep links require auth.
 
-## Notifications And Firebase
-
-- Push setup must not block normal app usage if permissions, native runtime, or provider credentials are unavailable.
-- Ask notification permission in context, not on first launch by default.
-- Register device tokens through a backend endpoint with provider, platform, and locale.
-- For Firebase, mobile may use Expo Notifications for permissions/device behavior and React Native Firebase Messaging for FCM tokens where needed.
-- Backend push delivery should use provider boundaries, chunk sends, serialize data payloads to strings, and disable invalid/stale tokens.
-- Keep in-app notifications/inbox separate from OS push delivery. Backend events should create durable notification records first, then optionally send push.
-
 ## Documents, Files, And Media
 
 - Use a two-step upload flow: backend creates an upload target, mobile uploads bytes, then mobile creates/links metadata.
@@ -195,6 +185,6 @@ For focused work, read the matching modular skill:
 - Backend DTO rejects unknown fields.
 - Authorization checks the actual resource owner/member/permission.
 - Files validate MIME, size, ownership, and storage key.
-- Push/OCR/file/provider failures do not block unrelated app usage.
+- OCR/file/provider failures do not block unrelated app usage.
 - i18n, dates, money, and accessibility labels are covered.
 - Typecheck/tests/build and a visual/manual workflow pass were run or explicitly noted as pending.

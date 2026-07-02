@@ -1,43 +1,134 @@
 ---
 name: offline-cache-skill
-description: Use when adding cached revisit data, offline packs, retry/network failure states, offline queues, sync mutations, stale data display, local persistence, or resilient mobile workflows for poor connectivity.
+description: Use when implementing, reviewing, or refactoring cached revisit data, offline packs, retry/network failure states, offline queues, sync mutations, stale data display, local persistence, optimistic updates, idempotency keys, or resilient mobile workflows for poor connectivity.
 ---
 
 # Offline Cache Skill
 
-Use this for mobile workflows that must remain useful on slow or unreliable networks.
+Use this skill when a mobile workflow should remain useful on slow, flaky, or missing networks.
+
+## When To Apply
+
+Use for:
+
+- Cached read screens.
+- Offline packs or read-only snapshots.
+- Retry and network-failure UI.
+- Offline write queues.
+- Optimistic updates.
+- Revisit/cached TanStack Query behavior.
+- File/upload retry states.
+- Any travel, field, finance, logistics, or productivity workflow where connectivity is unreliable.
+
+## Classify The Feature
+
+Before coding, decide:
+
+- Online-only: must have network; show clear network error.
+- Cached-read: can show stale data but writes need network.
+- Offline-draft: can collect input locally and submit later.
+- Offline-write: can queue mutation and sync later.
+- Realtime: can fall back to polling or cached read.
+
+Document which one applies.
 
 ## Read Behavior
 
-- Show cached data during refetch when stale data is acceptable.
-- First load needs skeleton/loading.
-- Revisit load can show cached content plus subtle refresh state.
-- Network failure should show a clear message and retry action.
-- Mark data as offline/stale when that matters to user decisions.
+- First load: skeleton/loading.
+- Revisit: show cached data while refetching when safe.
+- Stale state: indicate if decisions depend on freshness.
+- Error with cache: keep cached data visible and show non-blocking error.
+- Error without cache: show full error state with retry.
+- Empty state: distinguish true empty from failed load.
 
 ## Write Behavior
 
-- Offline writes need an outbox/queue, idempotency keys, retry policy, and conflict behavior.
-- Never clear local draft/offline data until the backend confirms success.
-- Mutations should be disabled or queued explicitly when the app is offline.
-- Show sync state for queued, syncing, failed, and complete items.
+For online writes:
 
-## Local Storage
+- Disable submit during mutation.
+- Show retry on network failure.
+- Do not clear form/draft until backend confirms.
 
+For offline writes:
+
+- Use an outbox/queue.
+- Add idempotency keys or offline UUIDs.
+- Track states: queued, syncing, failed, synced.
+- Define conflict behavior.
+- Sync in stable order when order matters.
+- Retry with backoff.
+- Let user retry or discard failed queued items.
+
+## Local Storage Rules
+
+- Scope cache by user id and resource id.
+- Clear sensitive cache on logout.
+- Version persisted cache schemas.
 - Store only data needed for resilience.
-- Scope local cache by user and resource id.
-- Clear sensitive cache on logout where appropriate.
-- Keep cache schema/version if stored data may evolve.
+- Avoid storing secrets in general-purpose storage.
+- Keep file paths/URIs valid across app restarts when needed.
 
-## Query Integration
+## TanStack Query Rules
 
-- TanStack Query owns server state.
-- Persist query data only where useful and safe.
-- Mutations must invalidate/refetch affected keys after sync.
+- Server state belongs in Query.
+- Query keys must include user/resource params.
+- Use `staleTime` intentionally.
+- Use cached data for display, not as source of truth for privileged writes.
+- Mutations should invalidate/refetch after sync.
+- Persist query data only for safe and useful resources.
 
-## Checklist
+## Offline Pack Pattern
 
-- Loading, cached, stale, offline, failed, retry, and sync states are visible.
-- Queued writes are idempotent.
-- Local data is scoped and cleared safely.
-- Backend confirms before local destructive cleanup.
+An offline pack is a read-only snapshot for an important resource.
+
+Include:
+
+- Resource id.
+- Version/timestamp.
+- Core summary data.
+- Critical related lists.
+- Last successful sync time.
+
+Use for:
+
+- Today's plan.
+- Important bookings/documents metadata.
+- Open tasks.
+- Latest messages preview.
+- Current balances or read-only summaries.
+
+Do not use for:
+
+- Secret tokens.
+- Highly sensitive content without encryption.
+- Data that becomes dangerous when stale unless clearly labeled.
+
+## Network Failure UX
+
+- Say what failed and what the user can still do.
+- Provide retry where practical.
+- Keep cached content visible when safe.
+- Use toast for non-blocking failures; use inline state for screen-blocking failures.
+- Distinguish validation errors from network errors.
+
+## Conflict Rules
+
+Define per feature:
+
+- Last write wins.
+- Server wins.
+- Client draft requires manual merge.
+- Duplicate-safe by idempotency key.
+- Reject and show recovery path.
+
+Never silently drop local user input.
+
+## Review Checklist
+
+- Feature is classified as online-only, cached-read, offline-draft, offline-write, or realtime fallback.
+- Loading/cached/stale/error/retry states exist.
+- Local data is scoped and safe.
+- Offline writes have idempotency keys.
+- Failed sync has user recovery.
+- Backend confirmation happens before destructive local cleanup.
+- Logout clears sensitive local data.
