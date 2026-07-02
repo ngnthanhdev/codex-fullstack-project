@@ -7,6 +7,7 @@ Use this phase to turn the idea into an implementation-ready plan.
 - [ ] Fill `docs/BRIEF.md`.
 - [ ] Fill `docs/SPECIFICATIONS.md`.
 - [ ] Read `docs/Production Rules.md` and mark which rules apply to the first vertical slice.
+- [ ] Read `skills/fullstack/production-app/SKILL.md` before selecting production implementation patterns.
 - [ ] Read `docs/Frontend Architecture Proposal.md` before deciding mobile structure.
 - [ ] Read `docs/Backend Architecture Proposal.md` before deciding API structure.
 - [ ] Define the first backend resource.

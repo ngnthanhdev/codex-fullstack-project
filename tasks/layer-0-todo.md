@@ -3,6 +3,7 @@
 - [ ] Fill the root project brief.
 - [ ] Fill the root specifications.
 - [ ] Review the production rules and choose the Layer 0 baseline.
+- [ ] Review the shared production app skill for reusable implementation patterns.
 - [ ] Define frontend architecture boundaries for the first vertical slice.
 - [ ] Define backend architecture boundaries for the first vertical slice.
 - [ ] Define the first fullstack vertical slice.

@@ -16,6 +16,7 @@
     "pick-task:api": "npm --prefix apps/api run pick-task",
     "add-task:mobile": "npm --prefix apps/mobile run add-task",
     "add-task:api": "npm --prefix apps/api run add-task",
+    "list-skills": "find skills apps/mobile/skills apps/api/skills -name SKILL.md | sort",
     "list-skills:mobile": "npm --prefix apps/mobile run list-skills"
   },
   "keywords": [

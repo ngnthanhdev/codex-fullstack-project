@@ -21,6 +21,7 @@ apps/
   api/      NestJS backend workspace and NestJS-specific Codex skills
 docs/       Shared fullstack planning documents
 tasks/      Shared cross-app task tracking
+skills/     Shared Codex skills for reusable production patterns
 AGENTS.md   Root instructions that Codex should read first
 ```
 
@@ -32,6 +33,10 @@ Codex should treat these files as the production baseline for new projects:
 - `docs/Frontend Architecture Proposal.md`: recommended mobile folder structure and data-flow boundaries.
 - `docs/Backend Architecture Proposal.md`: recommended NestJS structure, security baseline, and repository boundaries.
 - `docs/Refactor Plan.md`: phased plan for turning a scaffold into production-ready code.
+
+## Shared Skill
+
+- `skills/fullstack/production-app/SKILL.md`: generalized production app skill for mobile UX, design tokens, animation, forms, native date/time inputs, API/query layers, Firebase push, document/file upload, OCR review flows, i18n, offline/cache behavior, and production backend APIs.
 
 ## Clone The Project
 
@@ -61,7 +66,7 @@ npm run check
 5. Send this prompt:
 
 ```text
-Read AGENTS.md, docs/BRIEF.md, docs/SPECIFICATIONS.md, docs/ARCHITECTURE.md, docs/Production Rules.md, docs/Frontend Architecture Proposal.md, docs/Backend Architecture Proposal.md, docs/Refactor Plan.md, and tasks/layer-0-todo.md.
+Read AGENTS.md, skills/fullstack/production-app/SKILL.md, docs/BRIEF.md, docs/SPECIFICATIONS.md, docs/ARCHITECTURE.md, docs/Production Rules.md, docs/Frontend Architecture Proposal.md, docs/Backend Architecture Proposal.md, docs/Refactor Plan.md, and tasks/layer-0-todo.md.
 Then start Phase 0 for this fullstack Expo + NestJS project.
 Work sequentially: clarify the brief, update the specifications, define the production rules that apply now, define the first vertical slice, then propose the implementation order before coding.
 ```
@@ -75,14 +80,15 @@ Ask Codex to work in this order:
 1. Fill or refine `docs/BRIEF.md`.
 2. Turn the brief into concrete behavior in `docs/SPECIFICATIONS.md`.
 3. Apply the baseline in `docs/Production Rules.md`.
-4. Define the API boundary and app structure in `docs/ARCHITECTURE.md`.
-5. Align mobile implementation with `docs/Frontend Architecture Proposal.md`.
-6. Align backend implementation with `docs/Backend Architecture Proposal.md`.
-7. Break the first release into layers in `docs/SCOPE_BREAKDOWN.md`.
-8. Pick the first task from `tasks/layer-0-todo.md`.
-9. Scaffold runnable app code only after the product direction is clear.
-10. Implement backend behavior before mobile integration when the API shape is unclear.
-11. Test or verify each completed layer before moving forward.
+4. Read `skills/fullstack/production-app/SKILL.md` for reusable implementation patterns.
+5. Define the API boundary and app structure in `docs/ARCHITECTURE.md`.
+6. Align mobile implementation with `docs/Frontend Architecture Proposal.md`.
+7. Align backend implementation with `docs/Backend Architecture Proposal.md`.
+8. Break the first release into layers in `docs/SCOPE_BREAKDOWN.md`.
+9. Pick the first task from `tasks/layer-0-todo.md`.
+10. Scaffold runnable app code only after the product direction is clear.
+11. Implement backend behavior before mobile integration when the API shape is unclear.
+12. Test or verify each completed layer before moving forward.
 
 ## Useful Commands
 
@@ -92,6 +98,7 @@ npm run check:mobile
 npm run check:api
 npm run pick-task:mobile
 npm run pick-task:api
+npm run list-skills
 ```
 
 ## Environment Files

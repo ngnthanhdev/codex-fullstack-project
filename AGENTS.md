@@ -9,6 +9,7 @@ apps/mobile  Expo React Native frontend workspace
 apps/api     NestJS backend workspace
 docs         Shared fullstack planning documents
 tasks        Shared cross-app task tracking
+skills       Shared Codex skills for production fullstack work
 ```
 
 ## Working Rules
@@ -18,6 +19,7 @@ tasks        Shared cross-app task tracking
 - Use `docs/Frontend Architecture Proposal.md` for mobile structure and data-flow decisions.
 - Use `docs/Backend Architecture Proposal.md` for API structure, validation, security, and repository boundaries.
 - Use `docs/Refactor Plan.md` when turning a thin scaffold into production-ready code.
+- Use `skills/fullstack/production-app/SKILL.md` before implementing production user-facing workflows, forms, date/time inputs, uploads, notifications, offline/cache behavior, OCR/extraction, or cross-layer fullstack features.
 - For mobile work, also read `apps/mobile/AGENTS.md`.
 - For backend work, also read `apps/api/AGENTS.md`.
 - Keep API contracts explicit before wiring mobile screens to backend behavior.
@@ -41,12 +43,13 @@ tasks        Shared cross-app task tracking
 1. Clarify the product goal in `docs/BRIEF.md`.
 2. Turn the goal into detailed behavior in `docs/SPECIFICATIONS.md`.
 3. Read `docs/Production Rules.md` and decide which baseline rules apply immediately.
-4. Define the API boundary and shared contracts in `docs/ARCHITECTURE.md`.
-5. Align mobile structure with `docs/Frontend Architecture Proposal.md`.
-6. Align backend structure with `docs/Backend Architecture Proposal.md`.
-7. Break implementation into layers in `docs/SCOPE_BREAKDOWN.md`.
-8. Track cross-app work in `tasks/layer-0-todo.md`.
-9. Implement, test, and update `tasks/done.md`.
+4. Read `skills/fullstack/production-app/SKILL.md` for the reusable implementation baseline.
+5. Define the API boundary and shared contracts in `docs/ARCHITECTURE.md`.
+6. Align mobile structure with `docs/Frontend Architecture Proposal.md`.
+7. Align backend structure with `docs/Backend Architecture Proposal.md`.
+8. Break implementation into layers in `docs/SCOPE_BREAKDOWN.md`.
+9. Track cross-app work in `tasks/layer-0-todo.md`.
+10. Implement, test, and update `tasks/done.md`.
 
 ## Useful Commands
 
@@ -56,4 +59,5 @@ npm run check:mobile
 npm run check:api
 npm run pick-task:mobile
 npm run pick-task:api
+npm run list-skills
 ```
